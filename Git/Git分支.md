@@ -54,3 +54,48 @@ CONFLICT (content): Merge conflict in Git/readme.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 此时在编辑器中能看到出现冲突的地方，在选择了留下哪部分代码解决了冲突之后，再进行`git add` `git commit`提交代码，就解决了这个冲突。
+
+### git stash
+软件开发中，bug就像家常便饭一样。有了bug就需要修复，在Git中，由于分支是如此的强大，所以，每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
+
+当你接到一个修复一个代号101的bug的任务时，很自然地，你想创建一个分支issue-101来修复它，但是，等等，当前正在dev上进行的工作还没有提交：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git status
+On branch dev
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   "readme.md"
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug，怎么办？
+
+幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git stash
+Saved working directory and index state WIP on dev: 3182e2e 提交解决冲突操作
+```
+此时切换到发布分支上去checkout一个bug101分支，解决了bug之后，代码合并到主干上，然后把bug分支删除。此时应该切换回我们的dev开发分支上继续我们之前的开发：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git checkout dev
+Switched to branch 'dev'
+PS C:\workspace\AtomSpace\MarkDowns> git status
+On branch dev
+nothing to commit, working tree clean
+```
+此时你会发现，之前写的没有提交的部分都不见了，因为被`git stash`命令储藏起来了，那如何把这些代码取出来呢，有两种方式：
+* `git stash apply` + `git stash drop`
+用git stash apply恢复了代码之后，stash内容并不删除，所以要再调用一次`git stash drop`命令来删除。   
+
+但有一点要注意，**`drop`命令只会删除最上面一次stash，并不是清空，应该是利用弹栈的方式，需要注意。**
+* `git stash pop`
+这个命令就是上面两个命令的叠加了，取出存储的数据之后同时删除存储库中的数据。
+* `git stash list`
+这个命令可以查看当前存储的数量，如下：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git stash list
+stash@{0}: WIP on master: 3182e2e 提交信息1
+stash@{1}: WIP on dev: 3182e2e 提交信息2
+```
