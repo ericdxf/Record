@@ -103,11 +103,21 @@ no changes added to commit (use "git add" and/or "git commit -a")
 3. 可以看出Git给出了提示，我可以通过`git add .`命令把文件删除操作提交到暂存区，之后推送到远程仓库。或者通过`git checkout Others/test.txt`命令来从暂存区还原这次删除。
 4. 通过提示我们可以看出，本地删除的话只是把工作区间中的文件给删除了，暂存区和本地仓库，远程仓库中的文件都没有改变。
 * 第二种情况
-我们直接看调用的情况：
+通过调用`git rm Others/test.txt`命令来删除的话会删除本地文件，同时也会删除本地库中的对应文件。我们直接看调用的情况，删除之后再调用一次`git status`命令来查看一下状态：
 ```
+PS C:\workspace\AtomSpace\MarkDowns> git rm Others/test.txt
+rm 'Others/test.txt'
+PS C:\workspace\AtomSpace\MarkDowns> git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
 
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    Others/test.txt
 ```
-
+可以看出提示我调用`git push`来提交到远程仓库，再就是通过版本回退来恢复这次删除。这就证实了确实工作空间中的文件已经被删除了，同时本地库中的文件也被删除了。
 
 参考资料：
 廖雪峰大神的Git教程：[传送门](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
