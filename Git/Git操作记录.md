@@ -24,6 +24,8 @@ $ git status
 #
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
+从这些信息里能清楚地看出哪个文件有过改动，具体的改动信息呢就要通过下面这个指令来查看了。
+### git diff
 
 虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容，自然是很好的。比如你休假两周从国外回来，第一天上班时，已经记不清上次怎么修改的readme.txt，所以，需要用`git diff`这个命令看看：
 ```git
@@ -38,3 +40,13 @@ index 46d49bf..9247db6 100644
  Git is free software.
 ```
 通过这个命令可以清晰的看到那些文件有了更改，包括新增删除或者修改等情况。
+这里的`HEAD`指的是当前分支的上一次提交，而这句话的全部内容就是比较当前分支的状态和存储库中文件的区别。
+```
+git diff HEAD -- readme.txt
+```
+这句话的意思就是只单独比较这一个文件的差异。**HEAD\^代表上一次提交，\^符号的数量表示前几次提交。**
+
+
+
+参考资料：
+廖雪峰大神的Git教程：[传送门](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
