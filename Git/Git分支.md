@@ -36,3 +36,11 @@ PS C:\workspace\AtomSpace\MarkDowns> git branch
 * master
 ```
 **注意：上面说的所有的分支操作都是在本地仓库进行的，只有在`git push`之后远程仓库才会有相应变化**
+
+### git push origin -d \<branch name\>
+那么如何删除远程的分支呢，需要调用这个指令`git push origin -d <branch name>`，下面是调用示例：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git push origin -d dev
+To https://github.com/ericdxf/Record.git
+ - [deleted]         dev
+```
