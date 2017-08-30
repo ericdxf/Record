@@ -121,5 +121,11 @@ Changes to be committed:
 
 **总结一下：第一种方式只会删除本地文件，暂存区，本地库，远程库的更新都需要手动操作；而第二种方式则会删除本地和暂存区中的文件，而本地库和远程库的更新需要再行操作**
 
+### git clone
+当你想从远程仓库克隆项目到本地的话，就可以通过调用`git clone`命令来实现，具体调用规则如下：
+```
+git clone https://github.com/ericdxf/test.git
+```
+
 参考资料：
 廖雪峰大神的Git教程：[传送门](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
