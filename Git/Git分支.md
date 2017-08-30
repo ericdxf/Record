@@ -44,3 +44,13 @@ PS C:\workspace\AtomSpace\MarkDowns> git push origin -d dev
 To https://github.com/ericdxf/Record.git
  - [deleted]         dev
 ```
+### git 解决冲突
+合并代码时难免会出现冲突，毕竟是多人协作搞出来的，难免出现大家修改一个文件的问题，这是会提示这个：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git merge feature1
+
+Auto-merging Git/readme.txt
+CONFLICT (content): Merge conflict in Git/readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+此时在编辑器中能看到出现冲突的地方，在选择了留下哪部分代码解决了冲突之后，再进行`git add` `git commit`提交代码，就解决了这个冲突。
