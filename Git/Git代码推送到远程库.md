@@ -54,4 +54,6 @@ Total 3 (delta 0), reused 0 (delta 0)
 To https://github.com/ericdxf/test1.git
    f715821..7e2adca  master -> master
 ```
-好了，到这里，代码就关联到了GitHub中。 \^_\^
+![end](images/git_new_repository_success.png)
+
+好了，到这里，代码就关联到了GitHub中。 \^\_\^
