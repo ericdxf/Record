@@ -34,7 +34,8 @@ From https://github.com/ericdxf/test1
  * branch            master     -> FETCH_HEAD
  * [new branch]      master     -> origin/master
 ```
-可以看到更新下来了三个文件，其实更新代码只要`git pull origin master`就好了，但是首次更新的话需要添加` --allow-unrelated-histories`后缀，不加的话会报错`fatal: refusing to merge unrelated histories`,这个问题是在Git 2.9.0之后的版本才出现的，以前的版本不加也可以正常工作，具体原因应该是为了增强安全性而加的处理吧。
+可以看到更新下来了三个文件，其实更新代码只要`git pull origin master`就好了，但是首次更新的话需要添加` --allow-unrelated-histories`后缀，不加的话会报错`fatal: refusing to merge unrelated histories`,这个问题是在Git 2.9.0之后的版本才出现的，以前的版本不加也可以正常工作，具体原因应该是为了增强安全性而加的处理吧。  
+
 6. 接下来是把代码提交到本地仓库中，调用`git commit -m 提交信息`，提交信息就是你的这次改动的内容；一定要认真填写，不然版本多了之后想再查询之前的提交信息时，就会很麻烦。
 ```
 PS E:\respositoryTest> git commit -m "first commit"
