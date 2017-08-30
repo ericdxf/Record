@@ -17,3 +17,22 @@ PS C:\workspace\AtomSpace\MarkDowns> git branch
 * dev
   master
 ```
+### git merge
+dev分支上做的改动，在切换回master之后是看不到的，因为这是在这个分支上进行的改动。那么当我们切换回master后如何把分支上的代码合并过来呢，就是通过调用`git merge dev`这个命令了。
+```
+PS C:\workspace\AtomSpace\MarkDowns> git merge dev
+Updating eb19384..079e10c
+Fast-forward
+ "Git/Git分支.md" | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+```
+合并了之后，再调用`git checkout master`切换回master后，就能在主干上看到所有改动了。
+### git branch -d ***
+分支合并了之后就会要删除不用的分支，这就是删除分支的指令了。
+```
+PS C:\workspace\AtomSpace\MarkDowns> git branch -d dev
+Deleted branch branch_test (was 079e10c).
+PS C:\workspace\AtomSpace\MarkDowns> git branch
+* master
+```
+**注意：上面说的所有的分支操作都是在本地仓库进行的，只有在`git push`之后远程仓库才会有相应变化**
