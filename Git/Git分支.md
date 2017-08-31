@@ -35,6 +35,13 @@ Deleted branch branch_test (was 079e10c).
 PS C:\workspace\AtomSpace\MarkDowns> git branch
 * master
 ```
+但是如果分支没有合并的话，直接删除会报错：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git branch -d dev
+error: The branch 'dev' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D dev'.
+```
+根据提示也可以看出来，删除没有提交的分支的话需要调用`git branch -D dev`来强行删除。
 **注意：上面说的所有的分支操作都是在本地仓库进行的，只有在`git push`之后远程仓库才会有相应变化**
 
 ### git push origin -d \<branch name\>
