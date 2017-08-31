@@ -17,6 +17,14 @@ PS C:\workspace\AtomSpace\MarkDowns> git branch
 * dev
   master
 ```
+想要查看远程分支的话，用`git branch -a`
+```
+PS C:\workspace\AtomSpace\MarkDowns> git branch -a
+* dev
+  master
+  remotes/origin/dev
+  remotes/origin/master
+```
 ### git merge
 dev分支上做的改动，在切换回master之后是看不到的，因为这是在这个分支上进行的改动。那么当我们切换回master后如何把分支上的代码合并过来呢，就是通过调用`git merge dev`这个命令了。
 ```
