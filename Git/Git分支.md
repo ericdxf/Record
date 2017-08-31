@@ -106,3 +106,27 @@ PS C:\workspace\AtomSpace\MarkDowns> git stash list
 stash@{0}: WIP on master: 3182e2e 提交信息1
 stash@{1}: WIP on dev: 3182e2e 提交信息2
 ```
+
+### git remote
+要查看远程库的信息时，用`git remote`，远程库的名称默认为**origin**
+```
+PS C:\workspace\AtomSpace\MarkDowns> git remote
+origin
+```
+`git remote -v`能查看更详细的信息，包括远程仓库的地址：
+```
+PS C:\workspace\AtomSpace\MarkDowns> git remote -v
+origin  https://github.com/ericdxf/Record.git (fetch)
+origin  https://github.com/ericdxf/Record.git (push)
+```
+`git remote add origin <url>`这个是添加远程仓库的指令，那想换新的仓库怎么办呢，很简单。首先移除远程仓库：
+`git remote rm origin`之后再添加新的远程库就好了。
+### git tag
+命令`git tag <name>`用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+`git tag -a <tagname> -m "blablabla...`可以指定标签信息；
+`git tag -s <tagname> -m "blablabla...`可以用PGP签名标签；
+命令`git tag`可以查看所有标签。
+命令`git push origin <tagname>`可以推送一个本地标签；
+命令`git push origin --tags`可以推送全部未推送过的本地标签；
+命令`git tag -d <tagname>`可以删除一个本地标签；
+命令`git push origin :refs/tags/<tagname>`可以删除一个远程标签。

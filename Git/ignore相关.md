@@ -17,3 +17,18 @@ doc/*.txt 　　# 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 git rm -r --cached .  
 git add .  
 git commit -m 'update .gitignore'  
+### 检查忽略地址
+有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被**ignore**忽略了：
+```
+$ git add App.class
+The following paths are ignored by one of your .gitignore files:
+App.class
+Use -f if you really want to add them.
+```
+你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用`git check-ignore`命令检查：
+```
+$ git check-ignore -v App.class
+.gitignore:3:*.class    App.class
+```
+Git会告诉我们，`.gitignore`的第3行规则忽略了该文件，于是我们就可以知道应该修订哪个规则。
+### 最后附上官方的`.ignore`文件链接 [传送门](https://github.com/github/gitignore)
